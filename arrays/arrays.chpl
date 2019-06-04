@@ -105,4 +105,4 @@ writeln("Initially, VarArr = ", VarArr, "\n");
 VarDom = {1..2*n};
 writeln("After doubling VarDom, VarArr = ",VarArr, "\n");
 
-
+//just adding a stupid comment
