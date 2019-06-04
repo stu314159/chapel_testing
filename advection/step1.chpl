@@ -3,6 +3,8 @@
 //
 // represents step 1 in the 12-steps to CFD
 
+use IO;
+
 config const Nx = 41;
 var ProbSpace: domain(1) = {1..Nx};
 
@@ -37,5 +39,29 @@ for n in 1..nt do  {
     u[i] = un[i] - c*dt/dx*(un[i] - un[i-1]);
   }
 }
+
+writeVector(Nx,x,"x.b_dat");
+writeVector(Nx,u,"u.b_dat");
+
+// function to write a vector to a file name
+proc writeVector(n,X,filename){
+
+// create and open an outpu file with specified file name
+  var outfile = open(filename,iomode.cw);
+  var writer = outfile.writer();
+  writer.writeln(n);
+
+  // write out the vector
+  writer.write(X);
+  writer.close();
+  outfile.close();
+
+}
+
+
+// write data to a file somehow.
+// it would be nice if I could package metadata with
+// the data values.  
+
 
 
